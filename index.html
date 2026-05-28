@@ -12,33 +12,39 @@
             <h1>Login</h1>
             <div>
                 <label for="identify">Identify:</label>
-                <input type="email" id="identify">
+                <input type="email" id="identify" required>
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" id="password">
+                <input type="password" id="password" required>
             </div>
+            <link rel="dont registred? click here" href="">
             <input class="btn" type="submit" value="submit">
+            
+            <div id="res_login"></div>
+            <a id="link_login" href="">Dont registred? click here</a>
         </form>
 
-        <form id="register">
+        <form id="register" hidden>
             <h1>Register</h1>
             <div>
                 <label for="username">Username:</label>
-                <input type="text" id="username">
+                <input type="text" id="username" required>
             </div>
             <div>
                 <label for="email">Email:</label>
-                <input type="email" id="email">
+                <input type="email" id="email" required>
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" id="password_register">
+                <input type="password" id="password_register" required>
             </div>
             <input class="btn_register" type="submit" value="submit">
             
             <div id="res_register"></div>
-        
+            
+            <a id="link_register" href="">Already registred? click here</a>
+
         </form>
 
     </section>
