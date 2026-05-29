@@ -1,3 +1,8 @@
+const token = localStorage.getItem('access_token')
+if (!token) {
+    window.location.href = 'home.html'
+}
+
 function catching_login() {
     const password_user = document.querySelector('#password')
     const identify_user = document.querySelector('#identify')
@@ -27,6 +32,9 @@ function catching_login() {
         }
 
         console.log(data)
+
+
+
     })
 
 }
@@ -81,6 +89,18 @@ function toggle() {
     })
 }
 
+function catching_google() {
+    document.querySelector('#login_google').addEventListener('click', (e) => {
+    window.location.href = "http://127.0.0.1:8000/auth/google"
+})
+
+    document.querySelector('#register_google').addEventListener('click', (e) => {
+        window.location.href = "http://127.0.0.1:8000/auth/google"
+    })
+}
+
+
 catching_register()
 catching_login()
+catching_google()
 toggle()

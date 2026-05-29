@@ -8,11 +8,13 @@
 </head>
 <body>
     <section class="container">
+        <div id="tittle"><h1>Cinerag Analytics</h1></div>
+        
         <form id="login">
             <h1>Login</h1>
             <div>
                 <label for="identify">Identify:</label>
-                <input type="email" id="identify" required>
+                <input type="text" id="identify" required>
             </div>
             <div>
                 <label for="password">Password:</label>
@@ -20,7 +22,7 @@
             </div>
             <link rel="dont registred? click here" href="">
             <input class="btn" type="submit" value="submit">
-            
+            <button type="button" id="login_google">Sign in with Google</button>
             <div id="res_login"></div>
             <a id="link_login" href="">Dont registred? click here</a>
         </form>
@@ -40,7 +42,7 @@
                 <input type="password" id="password_register" required>
             </div>
             <input class="btn_register" type="submit" value="submit">
-            
+            <button type="button" id="register_google">Sign up with Google</button>
             <div id="res_register"></div>
             
             <a id="link_register" href="">Already registred? click here</a>

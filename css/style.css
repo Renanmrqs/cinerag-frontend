@@ -1,3 +1,35 @@
 body {
-    background-color: rgb(75, 79, 99);
+    background-color: #0A1828;
+}
+
+
+#tittle {
+    text-align: center;
+    font-size: 30px;
+    border-radius: 80%;
+    color: #9c0a0a;
+    
+}
+
+#login {
+    text-align: center;
+    border: 5px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+#register {
+    text-align: center;
+}
+
+#search-film {
+    text-align: center;
+    color: blue;
+    padding: 35px;
+}
+
+#grid {
+    text-align: center;
+    color: blue;
+    padding: 35px;
 }
