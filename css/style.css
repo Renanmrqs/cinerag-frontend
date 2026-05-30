@@ -1,35 +1,259 @@
 body {
-    background-color: #0A1828;
+    background-color: #0a0e1a;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
 
-#tittle {
-    text-align: center;
-    font-size: 30px;
-    border-radius: 80%;
-    color: #9c0a0a;
-    
-}
-
-#login {
-    text-align: center;
-    border: 5px;
-    padding: 10px;
+#login, #register {
+    background: #111827;
+    border-radius: 12px;
+    border: 1px solid #38bdf820;
+    padding: 40px;
+    width: 360px;
     margin: 0 auto;
 }
 
-#register {
-    text-align: center;
+#login h1, #register h1 {
+    color: #38bdf8;
+    margin-bottom: 24px;
 }
+
+#login input, #register input[type="text"],
+#register input[type="email"],
+#register input[type="password"] {
+    width: 100%;
+    background: #0a0e1a;
+    border: 1px solid #38bdf840;
+    color: #e2e8f0;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 8px 0 16px 0;
+    box-sizing: border-box;
+}
+
+
+#login label, #register label {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.btn, .btn_register {
+    width: 100%;
+    background: #38bdf8;
+    color: #0a0e1a;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+#login_google, #register_google {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #38bdf840;
+    color: #e2e8f0;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+#link_login, #link_register {
+    color: #38bdf8;
+    font-size: 13px;
+}
+
+/* pagina home */
 
 #search-film {
     text-align: center;
-    color: blue;
+    color: #e2e8f0;
+    font-weight: 500;
     padding: 35px;
 }
 
-#grid {
+#search-btn {
+    background: #38bdf8;
+    color: #0a0e1a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#search {
+    background: #111827;
+    border: 1px solid #38bdf840;
+    color: #e2e8f0;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+#tittle {
     text-align: center;
-    color: blue;
-    padding: 35px;
+    font-size: 48px;
+    font-weight: 700;
+    padding: 32px 0;
+    border-radius: 80%;
+    color: #38bdf8;
+    
+}
+
+
+
+
+
+#results {
+    display: flex;
+    flex-wrap: wrap; /* quebra linha quando encher */
+    gap: 16px; /* espaço entre os cards */
+    padding: 32px;
+    justify-content: center;
+    max-width:max-content;
+}
+
+
+.film-card {
+    width: 220px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+    background: #111827;
+    border-radius: 12px;
+    border: 1px solid #38bdf820;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.film-card:hover .card-inner {
+    transform: rotateY(180deg); /* gira no hover */
+}
+
+.card-front, .card-back {
+    display: flex;
+    border: 1px solid #38bdf820;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* esconde o verso quando não tá virado */
+
+}
+
+.card-back p {
+    color: #e2e8f0;
+    font-size: 11px;
+    padding: 12px;
+    text-align: center;
+    overflow: hidden; /* overview pode ser gigante */
+}
+
+.card-front p {
+    color: #e2e8f0;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px;
+}
+
+.card-back h3, .card-back span {
+    color: #e2e8f0;
+}
+
+
+.card-back {
+    background: #111827;
+    transform: rotateY(180deg); /* começa já virado, aparece quando o inner gira */
+    flex-direction: column;
+    justify-content: space-between; /* empurra titulo pro topo e data pro rodape */
+    padding: 12px;
+    
+}
+
+ #sentiment-panel {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #111827;
+    border-radius: 12px;
+    border: 1px solid #38bdf820;
+    color: #e2e8f0;
+}
+
+#sentiment-panel h2 {
+    color: #38bdf8;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.reviews p {
+    font-size: 12px;
+    color: #94a3b8;
+    border-left: 2px solid #38bdf8;
+    padding-left: 12px;
+    margin: 8px 0;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.positive {
+    background: #16a34a20;
+    color: #4ade80;
+}
+
+.negative {
+    background: #dc262620;
+    color: #f87171;
+}
+
+.mixed {
+    background: #ca8a0420;
+    color: #fbbf24;
+}
+
+.trust-bar {
+    background: #1e293b;
+    border-radius: 999px;
+    height: 8px;
+    width: 100%;
+}
+
+.trust-fill {
+    background: #38bdf8;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.btn-sentiment {
+    background: #38bdf8;
+    color: #0a0e1a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: 8px;
 }
