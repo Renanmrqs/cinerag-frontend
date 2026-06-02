@@ -316,3 +316,30 @@ body {
     text-decoration: none;
     font-size: 14px;
 }
+
+/* favorites */
+
+#favorites-panel {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 36px;
+    background: #111827;
+    border-radius: 15px;
+    border: 1px solid #21b9fa20;
+    color: #e2e8f0;
+
+}
+
+#favorites-panel hr {
+    border: 0;
+    border-top: 2px solid #4783c97c;
+    margin: 20px 0;
+}
+
+#date {
+    display: inline-block;
+    margin-top: 12px;
+    color: #1e293b;
+    background-color: #707f8f;
+    border-radius: 4px;
+}
