@@ -1,14 +1,13 @@
-const token = localStorage.getItem('access_token')
 if (!token) {
     window.location.href = 'index.html'
 }
 
-function catching_film () {
+function catching_film() {
 
-    
-                
+
+
     const user_search = document.querySelector('#search')
-    
+
     document.querySelector('#search-btn').addEventListener('click', async (e) => {
         e.preventDefault()
         show_toast('searching film')
@@ -16,8 +15,8 @@ function catching_film () {
         console.log(user_search.value)
         const res = await fetch(`http://127.0.0.1:8000/films/search_film/${user_search.value}`, {
             method: 'GET',
-            headers: {"Authorization": `bearer ${token}`}
-            }
+            headers: { "Authorization": `bearer ${token}` }
+        }
         )
         const data = await res.json()
         user_search.value = ''
@@ -27,14 +26,14 @@ function catching_film () {
             if (!film.has_reviews) return
             const film_card = document.createElement("div")
             film_card.classList.add('film-card')
-            
+
             const card_inner = document.createElement("div")
             card_inner.classList.add('card-inner')
 
             const card_front = document.createElement("div")
             card_front.classList.add('card-front')
             card_front.innerHTML = `<p>${film.title}</p>`
-            
+
             const card_back = document.createElement("div")
             card_back.classList.add('card-back')
             card_back.innerHTML = `
@@ -50,43 +49,43 @@ function catching_film () {
             btn_favorite.classList.add('btn-favorite')
             btn_favorite.textContent = 'Add to favorite movies'
             btn_favorite.onclick = () => post_favorite(film.id)
-            
+
             card_inner.append(card_front, card_back)
             film_card.append(card_inner)
             res_div.append(film_card)
             card_back.append(btn_sentiment, btn_favorite)
 
         });
-        
+
     })
-    
+
 }
 
 async function post_favorite(film_id) {
     console.log('ok')
-    body = {'movie_id': film_id} 
-    const res = await fetch (`http://127.0.0.1:8000/films/favorites/post_film?movie_id=${film_id}`, {
+    body = { 'movie_id': film_id }
+    const res = await fetch(`http://127.0.0.1:8000/films/favorites/post_film?movie_id=${film_id}`, {
         method: 'POST',
-        headers: {"Authorization": `bearer ${token}`}
+        headers: { "Authorization": `bearer ${token_fav}` }
     })
     const data = await res.json()
     console.log(data)
     if (data.message) {
         show_toast('Film Added!')
     }
-    
+
 }
 
 
 
-async function get_sentiment (film_id, title) {
-    
+async function get_sentiment(film_id, title) {
+
     show_toast('Analyzing sentiment')
 
-    const res = await fetch (`http://127.0.0.1:8000/films/get_score/${film_id}`, {
+    const res = await fetch(`http://127.0.0.1:8000/films/get_score/${film_id}`, {
         method: 'GET',
-        headers: {"Authorization": `bearer ${token}`}
-        }
+        headers: { "Authorization": `bearer ${token_fav}` }
+    }
     )
     const data = await res.json()
     console.log(data)
@@ -104,16 +103,16 @@ async function get_sentiment (film_id, title) {
     </div>
 
     <div class="reviews">
-    Film Reviews: ${data.sample_reviews.length > 0 
-    ? data.sample_reviews.map(review => `<p>${review}</p>`).join('') 
-    : '<p>No reviews for this film</p>'}
+    Film Reviews: ${data.sample_reviews.length > 0
+            ? data.sample_reviews.map(review => `<p>${review}</p>`).join('')
+            : '<p>No reviews for this film</p>'}
     </div>
     `
     sentiment_panel.innerHTML = ''
     sentiment_panel.append(film_sentiment)
-    sentiment_panel.removeAttribute('hidden') 
+    sentiment_panel.removeAttribute('hidden')
     show_toast('Finished')
-    }
+}
 
 function show_toast(message) {
     const toast = document.createElement('div')
