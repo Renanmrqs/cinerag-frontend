@@ -1,7 +1,7 @@
 const token = localStorage.getItem('access_token')
 
 function connect_ws () {
-    ws = new WebSocket(`ws://127.0.0.1:8000/ws?token=${token}`)
+    ws = new WebSocket(`wss://cinerag-api.onrender.com/ws?token=${token}`)
 
     ws.onopen = () => {
         console.log('conectado')

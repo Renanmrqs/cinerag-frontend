@@ -1,5 +1,5 @@
 async function show_favorites () {
-    const res = await fetch('http://127.0.0.1:8000/films/favorites/get_all' , {
+    const res = await fetch('https://cinerag-api.onrender.com/films/favorites/get_all' , {
             method: 'GET',
             headers: {"Authorization": `bearer ${token}`}
         }
@@ -39,17 +39,16 @@ async function show_favorites () {
             </div>
 
             <span id="date" >Added on: ${new Date(fav.added_at).toLocaleDateString('pt-BR')}</span> 
-            <hr>
             `
-
+            fav_card.append(del_btn)
             favs_panel.append(fav_card)
-            favs_panel.append(del_btn)
+            favs_panel.append(document.createElement("hr"))
         });
 }}
 
 async function del_favorite (id) {
     const body = {'id': id}
-    const res = await fetch(`http://127.0.0.1:8000/films/favorites/del_fav?id=${id}` , {
+    const res = await fetch(`https://cinerag-api.onrender.com/films/favorites/del_fav?id=${id}` , {
             method: 'DELETE',
             headers: {"Authorization": `bearer ${token}`}
         }

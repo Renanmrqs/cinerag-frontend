@@ -1,5 +1,5 @@
 const token = localStorage.getItem('access_token')
-if (!token) {
+if (token) {
     window.location.href = 'home.html'
 }
 
@@ -17,7 +17,7 @@ function catching_login() {
         formData.append('username', user)
         formData.append('password', password)
 
-        const res = await fetch("http://127.0.0.1:8000/auth/login", {
+        const res = await fetch("https://cinerag-api.onrender.com/auth/login", {
             method: 'POST',
             body: formData
         })
@@ -56,7 +56,7 @@ function catching_register() {
             "email": email
         }
 
-        const res = await fetch("http://127.0.0.1:8000/auth/register", {
+        const res = await fetch("https://cinerag-api.onrender.com/auth/register", {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
@@ -91,11 +91,11 @@ function toggle() {
 
 function catching_google() {
     document.querySelector('#login_google').addEventListener('click', (e) => {
-    window.location.href = "http://127.0.0.1:8000/auth/google"
+    window.location.href = "https://cinerag-api.onrender.com/auth/google"
 })
 
     document.querySelector('#register_google').addEventListener('click', (e) => {
-        window.location.href = "http://127.0.0.1:8000/auth/google"
+        window.location.href = "https://cinerag-api.onrender.com/auth/google"
     })
 }
 

@@ -13,7 +13,7 @@ function catching_film() {
         show_toast('searching film')
 
         console.log(user_search.value)
-        const res = await fetch(`http://127.0.0.1:8000/films/search_film/${user_search.value}`, {
+        const res = await fetch(`https://cinerag-api.onrender.com/films/search_film/${user_search.value}`, {
             method: 'GET',
             headers: { "Authorization": `bearer ${token}` }
         }
@@ -64,7 +64,7 @@ function catching_film() {
 async function post_favorite(film_id) {
     console.log('ok')
     body = { 'movie_id': film_id }
-    const res = await fetch(`http://127.0.0.1:8000/films/favorites/post_film?movie_id=${film_id}`, {
+    const res = await fetch(`https://cinerag-api.onrender.com/films/favorites/post_film?movie_id=${film_id}`, {
         method: 'POST',
         headers: { "Authorization": `bearer ${token}` }
     })
@@ -82,7 +82,7 @@ async function get_sentiment(film_id, title) {
 
     show_toast('Analyzing sentiment')
 
-    const res = await fetch(`http://127.0.0.1:8000/films/get_score/${film_id}`, {
+    const res = await fetch(`https://cinerag-api.onrender.com/films/get_score/${film_id}`, {
         method: 'GET',
         headers: { "Authorization": `bearer ${token}` }
     }
