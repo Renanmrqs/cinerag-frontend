@@ -66,7 +66,7 @@ async function post_favorite(film_id) {
     body = { 'movie_id': film_id }
     const res = await fetch(`http://127.0.0.1:8000/films/favorites/post_film?movie_id=${film_id}`, {
         method: 'POST',
-        headers: { "Authorization": `bearer ${token_fav}` }
+        headers: { "Authorization": `bearer ${token}` }
     })
     const data = await res.json()
     console.log(data)
@@ -84,7 +84,7 @@ async function get_sentiment(film_id, title) {
 
     const res = await fetch(`http://127.0.0.1:8000/films/get_score/${film_id}`, {
         method: 'GET',
-        headers: { "Authorization": `bearer ${token_fav}` }
+        headers: { "Authorization": `bearer ${token}` }
     }
     )
     const data = await res.json()
