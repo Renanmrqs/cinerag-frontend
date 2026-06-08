@@ -23,11 +23,14 @@ function catching_login() {
         })
         const data = await res.json()
 
+        const google_auth = await fetch
+
         if (res.status === 200) {
             localStorage.setItem('access_token', data.access_token)
             localStorage.setItem('user_id', data.user_id)
             window.location.href = 'home.html'
-        } else {
+        }
+        else {
             document.querySelector('#res_login').innerHTML = `<h3>ERROR: ${data.detail}</h3>`
         }
 
@@ -92,15 +95,33 @@ function toggle() {
 function catching_google() {
     document.querySelector('#login_google').addEventListener('click', (e) => {
     window.location.href = "https://cinerag-api.onrender.com/auth/google"
+    
 })
-
     document.querySelector('#register_google').addEventListener('click', (e) => {
         window.location.href = "https://cinerag-api.onrender.com/auth/google"
+
     })
 }
 
+function handle_google () {
+    const urlParams= new URLSearchParams(window.location.search);
+    const token = urlParams.get('token')
+    
+    if (token) {
+        localStorage.setItem('access_token', token)
+        
+        const payloadBase64 = token.split('.')[1];
+        const payloadDecodified = JSON.parse(atob(payloadBase64));
+
+        localStorage.setItem('user_id', payloadDecodified.sub)
+        
+        window.history.replaceState({}, document.title, window.location.pathname);
+        window.location.href = 'home.html';
+    }
+}
 
 catching_register()
 catching_login()
 catching_google()
+handle_google()
 toggle()
