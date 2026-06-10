@@ -23,7 +23,6 @@ function catching_login() {
         })
         const data = await res.json()
 
-        const google_auth = await fetch
 
         if (res.status === 200) {
             localStorage.setItem('access_token', data.access_token)
@@ -107,6 +106,10 @@ function handle_google () {
     const urlParams= new URLSearchParams(window.location.search);
     const token = urlParams.get('token')
     
+    console.log("URL atual:", window.location.href); // VEJA O QUE ESTÁ NA URL
+    console.log("Token capturado:", token); // VEJA SE ELE REALMENTE ACHA O TOKEN
+
+
     if (token) {
         localStorage.setItem('access_token', token)
         
