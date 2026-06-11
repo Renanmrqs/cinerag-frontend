@@ -21,13 +21,14 @@ function catching_register () {
         const data = await res.json()
         
         if (data.message === `user ${username} updated`) {
-        document.querySelector('#res_register').innerHTML = '<h3>Registred with succesfull</h3>'
-        } else {
+            localStorage.setItem('access_token', data.access_token)
+            window.location.href = 'home.html';
+    } else {
         document.querySelector('#res_register').innerHTML = `<h3>ERROR: ${data.detail}</h3>`
         }
         
-        window.history.replaceState({}, document.title, window.location.pathname);
-        window.location.href = 'home.html';
+        
+
     })
 
 
@@ -40,10 +41,15 @@ function handle_google () {
     const urlParams= new URLSearchParams(window.location.search);
     const token = urlParams.get('token')
     
+    if (!token) {
+        window.location.href = 'index.html'
+        return null
+    }
+
+
     console.log("URL atual:", window.location.href); // VEJA O QUE ESTÁ NA URL
     console.log("Token capturado:", token); // VEJA SE ELE REALMENTE ACHA O TOKEN
     
-    localStorage.setItem('access_token', token)
     
     const payloadBase64 = token.split('.')[1];
     const payloadDecodified = JSON.parse(atob(payloadBase64));
