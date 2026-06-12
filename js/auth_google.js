@@ -12,6 +12,7 @@ function catching_register () {
     const payloadBase64 = token.split('.')[1];
     const payloadDecodified = JSON.parse(atob(payloadBase64));
     localStorage.setItem('user_id', payloadDecodified.sub);
+    localStorage.setItem('username', payloadDecodified.username);
 
     document.querySelector('#register').addEventListener('submit', async (e) => {
         e.preventDefault()
@@ -29,7 +30,7 @@ function catching_register () {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
         })
-        
+
         const data = await res.json()
         
         if (res.ok && data.message === `user ${username} updated`) {
