@@ -273,7 +273,7 @@ body {
 .toast {
     position: fixed;
     bottom: 32px;
-    right: 32px;
+    left: 32px;
     background: #1e293b;
     color: #e2e8f0;
     padding: 12px 20px;
