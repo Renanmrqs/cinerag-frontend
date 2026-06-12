@@ -12,7 +12,7 @@ function catching_register () {
     const payloadBase64 = token.split('.')[1];
     const payloadDecodified = JSON.parse(atob(payloadBase64));
     localStorage.setItem('user_id', payloadDecodified.sub);
-    localStorage.setItem('username', payloadDecodified.username);
+    localStorage.setItem('username', username_user.value);
 
     document.querySelector('#register').addEventListener('submit', async (e) => {
         e.preventDefault()

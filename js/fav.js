@@ -27,7 +27,7 @@ async function show_favorites () {
             del_btn.onclick = () => del_favorite(fav.id)
 
             fav_card.innerHTML = `
-            <h1>Welcome to your favorites movies ${localStorage.getItem("username")}</h2>
+            <h1>Welcome to your favorites movies ${localStorage.getItem("username")}!</h2>
             <h2>${fav.title}</h2>
 
             <span class="badge ${fav.sentiment}">

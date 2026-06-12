@@ -27,7 +27,7 @@ function catching_login() {
         if (res.status === 200) {
             localStorage.setItem('access_token', data.access_token)
             localStorage.setItem('user_id', data.user_id)
-            localStorage.setItem('username', data.username);
+            localStorage.setItem('username', user);
             window.location.href = 'home.html'
         }
         else {
