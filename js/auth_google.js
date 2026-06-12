@@ -26,9 +26,7 @@ function catching_register () {
 
         const res = await fetch("https://cinerag-api.onrender.com/auth/complete-profile", {
             method: 'PATCH',
-            headers: {"Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
         })
         
