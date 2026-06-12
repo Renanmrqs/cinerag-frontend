@@ -2,6 +2,14 @@ if (!token) {
     window.location.href = 'index.html'
 }
 
+window.addEventListener('load', async () => {
+    res = await fetch(`https://sentimentai-api.onrender.com/docs`)
+    console.log(res)
+
+})
+
+
+
 function catching_film() {
 
 
