@@ -2,6 +2,13 @@ body {
     background-color: #0a0e1a;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main, section.container {
+    flex: 1;
 }
 
 .container {
@@ -348,6 +355,15 @@ body {
     float: right;
 }
 
+.welcome-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 25px;
+    padding: 18px 0;
+    border-radius: 80%;
+    color: #38bdf8;
+}
+
 #date {
     display: inline-block;
     margin-top: 12px;
@@ -367,14 +383,14 @@ body {
 
 #chat-btn {
     position: fixed;
-    bottom: 32px;
+    bottom: 100px;
     right: 32px;
     background: #38bdf8;
     color: #0a0e1a;
     border: none;
-    padding: 12px 20px;
+    padding: 22px 26px;
     border-radius: 999px;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     z-index: 999;
 }
@@ -454,5 +470,25 @@ body {
     max-width: 80%;
 }
 
-/* google_register */
+/* footer */
 
+.footer {
+    border-top: 1px solid #38bdf820;
+    color: #94a3b8;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    margin-top: auto;
+}
+
+.footer a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}

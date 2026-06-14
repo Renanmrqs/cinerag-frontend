@@ -16,7 +16,14 @@ async function show_favorites () {
             `
         favs_panel.append(fav_card)
     } else {
-        data.forEach(fav => {
+            const welcome_msg = document.createElement("div")
+            welcome_msg.classList.add("welcome-header")
+            welcome_msg.innerHTML = `
+            <h1>Welcome to your favorites movies ${localStorage.getItem("username")}!</h2>
+            `
+            favs_panel.append(welcome_msg)
+
+            data.forEach(fav => {
             const fav_card = document.createElement("div")
             fav_card.classList.add("fav-card")
             const del_btn = document.createElement("button")
@@ -27,7 +34,6 @@ async function show_favorites () {
             del_btn.onclick = () => del_favorite(fav.id)
 
             fav_card.innerHTML = `
-            <h1>Welcome to your favorites movies ${localStorage.getItem("username")}!</h2>
             <h2>${fav.title}</h2>
 
             <span class="badge ${fav.sentiment}">
