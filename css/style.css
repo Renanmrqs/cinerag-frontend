@@ -145,7 +145,7 @@ main, section.container {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease;
+    transition: transform 1.0s ease;
 }
 
 .film-card:hover .card-inner {
@@ -162,7 +162,6 @@ main, section.container {
     width: 100%;
     height: 100%;
     backface-visibility: hidden; /* esconde o verso quando não tá virado */
-
 }
 
 .card-back p {
