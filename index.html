@@ -1,67 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <section class="container">
-        <div id="tittle"><h1>Cinerag Analytics</h1></div>
-        
-        <form id="login">
-            <h1>Login</h1>
-            <div>
-                <label for="identify">Identify:</label>
-                <input type="text" id="identify" required>
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
-            </div>
-            <link rel="dont registred? click here" href="">
-            <input class="btn" type="submit" value="submit">
-            <button type="button" id="login_google">Sign in with Google</button>
-            <div id="res_login"></div>
-            <a id="link_login" href="">Dont registred? click here</a>
-        </form>
-
-        <form id="register" hidden>
-            <h1>Register</h1>
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password_register" required>
-            </div>
-            <input class="btn_register" type="submit" value="submit">
-            <button type="button" id="register_google">Sign up with Google</button>
-            <div id="res_register"></div>
-            <a id="link_register" href="">Already registred? click here</a>
-
-        </form>
-
-    </section>
-
-
-<script src="js/auth.js"></script>
-<footer class="footer">
-    <p>Built by <a href="https://github.com/Renanmrqs" target="_blank">Renan Marques</a></p>
-    <div class="footer-links">
-        <a href="https://github.com/Renanmrqs/cinerag-api" target="_blank">API</a>
-        <a href="https://github.com/Renanmrqs/cinerag-frontend" target="_blank">Frontend</a>
-        <a href="https://linkedin.com/in/renan-marques-dev-python" target="_blank">LinkedIn</a>
-    </div>
-</footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cinerag-frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
