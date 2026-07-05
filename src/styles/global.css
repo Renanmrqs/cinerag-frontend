@@ -1,0 +1,35 @@
+@import "variables.css";
+
+
+body {
+    background-color: var(--color-bg);
+    color: var(--text-color);
+}
+
+h1 {
+    color: var(--color-primary);
+}
+
+.primary-btn {
+    background-color: var(--color-primary);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: var(--border-radius-btn);
+    margin-bottom: 8px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.secondary-btn {
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: var(--border-radius-btn);
+    margin-bottom: 8px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.big-btn-size {
+    width: 200px;
+}

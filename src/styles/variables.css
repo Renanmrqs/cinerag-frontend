@@ -1,0 +1,15 @@
+:root {
+    --color-bg: #111827;
+    --color-primary: #38bdf8;
+    --color-secondary: #2f4f96;
+    --border: 1px solid #38bdf820;
+    --text-color: #e2e8f0;
+    --border-radius-normal: 16px;
+    --border-radius-btn: 6px;
+    --sentiment-positive-color: #4ade80;
+    --sentiment-positive-bg: #16a34a20;
+    --sentiment-mixed-color: #fbbf24;
+    --sentiment-mixed-bg: #ca8a0420;
+    --sentiment-negative-color: #f87171;
+    --sentiment-negative-bg: #dc262620;
+}
