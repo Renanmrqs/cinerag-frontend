@@ -1,0 +1,269 @@
+@import url(variables.css);
+
+
+/* hero */
+
+
+.landing-hero {
+    min-height: 450px;
+    margin: 0 auto;
+    padding: 45px ;
+    gap: 25px;
+    background-image: 
+    linear-gradient(to bottom, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 55%),
+    linear-gradient(to top, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 55%),
+    linear-gradient(to right, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 55%),
+    linear-gradient(to left, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 65%),
+    url('../assets/home-aranha.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20%;
+    /* filter: saturate(80%); */
+}
+
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.hero-content p {
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1.8;
+    max-width: 600px;
+    color: #dac9c9ea;
+    margin-bottom: 32px;
+}
+
+
+.content-title {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.content-title h1 {
+    font-size: 4.5rem;
+    font-weight: 950;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.content-title img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    margin-top: 48px;
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
+}
+
+.hero-display-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+/* about */
+
+
+.about-hero {
+    padding: 20px 55px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-hero p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+
+/* features */
+
+
+.features-landing {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.all-features-card {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    display: inline-flex; 
+    flex-direction: column;
+    border: var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    min-width: 220px;
+    transition: border-color 0.3s ease;
+    max-width: 400px;
+    flex: 1;
+}
+
+.feature-card:hover {
+    border-color: #4a90e2;
+}
+
+.feature-card h3 {
+    color: #4a90e2;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+
+/* images */
+
+
+.images-landing {
+    border-top: var(--border);
+    border-bottom: var(--border);
+    padding: 20px 20px;
+    gap: 5px;
+}
+
+.image-page {
+    display: flex;
+    margin: 0 auto;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+.content-text h1 {
+    color: var(--text-color);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.content-text p {
+    text-align: justify;
+}
+
+.content-img {
+    border: var(--border);
+    margin: 0 auto;
+    max-width: 1000px;
+    max-height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 450px;
+}
+
+
+.content-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.content-img:hover img {
+    transform: scale(1.1);
+}
+
+
+/* built */
+
+
+.built-landing {
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.stack-section {
+    display: flex;
+    gap: 20px;
+}
+
+.stack-card {
+    display: flex; 
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: var(--color-bg);
+    border: var(--border);
+    border-radius: 20px;
+    padding: 22px;
+    min-width: 300px;
+    transition: border-color 0.3s ease;
+    }
+
+.stack-card:hover {
+    border-color: #4a90e2;
+}
+
+.list-stack {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.list-stack li {
+    display: flex;
+    align-items:flex-start;
+    gap: 6px;
+    color: #b8c2d8;
+    font-size: 0.99rem;
+    transition: color 0.2s ease;
+}
+
+
+
+.list-stack li:hover {
+    
+    color: #4a90e2;
+}
+
+
+/* cta */
+
+
+.cta-section {
+    display: flex;
+    flex-direction: column;
+    border-top: var(--border);
+    align-items: center;
+    padding: 10px;
+   
+}

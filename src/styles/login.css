@@ -1,0 +1,34 @@
+@import url(variables.css);
+
+.container-login {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.title-login {
+    font-size: 2.0rem;
+    margin: 0 auto;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.form-login {
+    border: var(--border);
+    border-radius: var(--border-radius-normal);
+    width: 360px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.password-container, .identify-container {
+    width: 100%;
+    background: #0a0e1a;
+    border: 1px solid #38bdf840;
+    color: #e2e8f0;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 8px 0 16px 0;
+    box-sizing: border-box;
+    
+}

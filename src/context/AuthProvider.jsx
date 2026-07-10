@@ -11,9 +11,9 @@ export function AuthProvider ( {children} ) {
 )
      
     function login ( item ) {
-        setUser({accessToken: item.accessToken,
-            userID: item.userId,
-            userName: item.userName
+        setUser({accessToken: item.access_token,
+            userID: item.user_id,
+            userName: item.username
     })
         
 
