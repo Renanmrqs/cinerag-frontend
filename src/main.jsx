@@ -7,6 +7,7 @@ import './styles/about.css'
 import './styles/features.css'
 import './styles/built.css'
 import './styles/imageslanding.css'
+import './styles/ctasection.css'
 
 import App from './App.jsx'
 

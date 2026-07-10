@@ -34,11 +34,29 @@
     color: #dac9c9ea;
     margin-bottom: 32px;
 }
-.hero-content h1 {
+
+
+.content-title {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.content-title h1 {
     font-size: 4.5rem;
     font-weight: 950;
-    margin-bottom: 12px;
     line-height: 1;
+    margin-bottom: 5px;
+}
+
+.content-title img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    margin-top: 48px;
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5));
 }
 
 .hero-display-btn {

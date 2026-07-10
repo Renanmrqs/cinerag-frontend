@@ -13,7 +13,6 @@ function ImagesLanding ( {image} ) {
                 </div>
                 
                 <div className="content-img">
-                    {onmousemove}
                     <img src={section.img} alt="screeshot projet" />
                 </div>
                 
