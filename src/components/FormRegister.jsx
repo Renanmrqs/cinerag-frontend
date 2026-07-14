@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from "react"
-import { postLogin } from "../services/AuthService.js" 
+import { postLogin, postRegister } from "../services/AuthService.js" 
 import { AuthProviderContext } from "../context/UserContext"
 import Toast from "../components/Toast.jsx"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 
-function FormLogin () {
+function FormRegister () {
     const [password, setPassword] = useState("")
-    const [identify, setIdentify] = useState("")
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
     const [errorToast, setErrorToast] = useState(null)
 
     const {user, login} = useContext(AuthProviderContext)
@@ -17,12 +18,20 @@ function FormLogin () {
         event.preventDefault()
         
         try {
-            const userResponse = await postLogin(identify, password)
+            const registerReponse = await postRegister(username, email, password)
+        } catch (error) {
+            setErrorToast(error)
+            return
+        }
+    
+        try {
+            const userResponse = await postLogin(username, password)
             login(userResponse)
             navigate('/home')
         } catch (error) {
             setErrorToast(error)
         }
+    
     }
 
    
@@ -34,22 +43,30 @@ function FormLogin () {
                 <h1>CineRag Analytics</h1>
             </div>
             <form className="form-auth" onSubmit={(event) => handleSubmit(event)}>
-                <h2>Login</h2>
+                <h2>Register</h2>
                     
                     <div className="identify-container">
-                        <label htmlFor="identify-login">Identify:</label>
-                        <input value={identify} onChange={(e) => setIdentify(e.target.value)} id="identify-login" className="identify-login" type="text" required/>
+                        <label htmlFor="username-register">Username:</label>
+                        <input value={username} onChange={(e) => setUsername(e.target.value)} id="username-register" className="username-register" type="text" required/>
                     </div>
                    
+                    <div className="email-container">
+                        <label htmlFor="email-register">Email:</label>
+                        <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} id="email-register" className="email-register" required/>
+                    </div>
+
                     <div className="password-container">
-                        <label htmlFor="password-login">Password:</label>
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} id="password-login" className="password-login" type="password" required/>
+                        <label htmlFor="password-register">Password:</label>
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} id="password-register" className="password-login" type="password" required/>
                     </div>
                     
                     <div className="auth-btns">
                         <input className="primary-btn submit-auth" type="submit"/>
-                        <button type="button" className="btn-outline auth-google">Sing in with google</button>
+                        <button type="button" className="btn-outline auth-google">Register with google</button>
+                       
                     </div>
+                   
+                    
                     <div>
                         {errorToast && (
                         <Toast variant="toast toast-error" trigger={true} onClose={() => setErrorToast(null)}>
@@ -58,10 +75,9 @@ function FormLogin () {
                         )}
                     </div>
             </form>
-            <Link className="btn-outline link-btn " to={'/register'}>Dont have account? click here</Link>
-            
+            <Link className="btn-outline link-btn"  to={'/login'}>Already have account? click here</Link>
         </section>
     )
 }
 
-export default FormLogin
+export default FormRegister

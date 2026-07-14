@@ -1,0 +1,152 @@
+[!info] Contexto CineRAG deixou de ser "projeto pra aprender React" e virou produto real: landing page, dashboard, área logada, domínio próprio. Ambição é intencional — o objetivo é ter algo que realmente se destaque, não só mais um CRUD de portfólio. Desenvolvimento na branch `refactor/react`, sem afetar o `main` em produção até estar pronto pra virar o principal.
+> 
+> Regra geral: cada fase termina com algo **rodando e visível**, mesmo que incompleto. Isso evita o risco de projeto grande travar no meio por falta de "vitória visível".
+
+---
+
+## Fase 0 — Planejamento
+
+- [x] Estrutura no Obsidian: `CineRAG > Docs / Roadmap / Arquitetura / Design / API / Componentes / Features futuras`
+- [x] Wireframe das telas no Excalidraw (não precisa Figma): Landing → Login → Cadastro → Dashboard → Detalhes → Favoritos → Chat
+- [x] Definir stack real do "Built with" (só o que existe de fato — ver nota no final)
+
+## Fase 1 — Setup do projeto
+
+- [x] Criar projeto Vite + React na branch `refactor/react`
+- [x] Instalar React Router
+- [x] Criar estrutura de pastas (ver seção Arquitetura)
+- [x] Configurar `.env` com URL base da API
+
+## Fase 2 — Design system mínimo
+
+- [x] Definir paleta de cores e tipografia
+- [x] Componente `Button`
+- [ ] Componente `Input`
+- [ ] Componente `Card`
+- [ ] Componente `Modal`
+- [x] Componente `Loader`
+- [x] Componente `Toast`
+
+## Fase 3 — Landing page
+
+> Construída dentro do mesmo projeto React (é a rota pública `/`), não é um site separado.
+
+- [x] Hero: proposta de valor (ex: _"Descubra o que as pessoas realmente pensam sobre filmes"_) + botões `Try now` e `GitHub`
+- [x] Seção "Como funciona"
+- [x] Seção de funcionalidades: recomendação, análise de sentimento, chat com IA, favoritos, tempo real
+- [x] Seção "Built with" — **só tecnologias realmente usadas**: FastAPI, React, PostgreSQL, JWT, Google OAuth
+- [x] Screenshots do produto
+- [x] CTA final de cadastro
+
+## Fase 4 — Autenticação
+
+- [x] Página de login
+- [ ] Página de cadastro
+- [ ] Callback do Google OAuth
+- [x] `AuthContext` (guarda token/user)
+- [ ] `ProtectedRoute` (bloqueia acesso sem login)
+
+## Fase 5 — Busca + sentimento
+
+- [ ] Tela de busca (substitui `home.html`)
+- [ ] Componente `MovieCard` (flip 3D, reutilizável)
+- [ ] Painel/badge de sentimento
+- [ ] Ação de favoritar direto do card
+
+## Fase 6 — Dashboard
+
+- [ ] Endpoint de stats consumido (ver Backend)
+- [ ] Total de favoritos
+- [ ] Distribuição positivo / negativo / misto (gráfico)
+- [ ] Filme com maior e menor confiança
+
+## Fase 7 — Chat WebSocket
+
+- [ ] Widget flutuante (`ChatBox`, `MessageBubble`) presente em toda área logada
+- [ ] Hook `useWebSocket` (abre/fecha conexão com cleanup correto)
+- [ ] Manter comandos rápidos (`/positives`, `/negatives`, etc.)
+
+## Fase 8 — Polimento (só depois de tudo acima funcionando)
+
+- [ ] Responsividade: desktop → tablet → mobile
+- [ ] Dark mode
+- [ ] Skeleton loading (em vez de spinner)
+- [ ] Error pages (404, 500)
+- [ ] Empty states (ex: "Nenhum favorito ainda")
+
+## Fase 9 — Diferenciação (o que te separa de "mais um projeto igual")
+
+- [ ] Página de roadmap público (mostra que o projeto continua vivo)
+- [ ] Changelog (v1.0, v1.1...)
+- [ ] Página "About" contando o porquê do projeto
+
+## Fase 10 — TypeScript
+
+- [ ] Migração incremental agora que o React já está internalizado
+
+## Fase 11 — Testes
+
+- [ ] Vitest
+- [ ] React Testing Library — testes de componente já bastam para portfólio
+
+## Fase 12 — Docker (frontend)
+
+- [ ] Containerizar o frontend
+
+## Fase 13 — CI/CD
+
+- [ ] GitHub Actions: Lint → Testes → Build → Deploy
+
+## Fase 14 — Domínio próprio
+
+- [ ] Registrar domínio
+- [ ] Apontar DNS pro deploy (Vercel)
+- [ ] Certificado HTTPS (automático na Vercel)
+
+---
+
+## Backend
+
+- [ ] Endpoint `GET /favorites/stats` — estatísticas agregadas para o dashboard (evita depender do chat/Gemini pra isso)
+- [ ] Docker
+- [ ] Melhorar testes
+- [ ] Revisar CORS / configs de produção
+
+---
+
+## Arquitetura do frontend
+
+Mesma disciplina de separar por responsabilidade que já uso no backend (routers/schemas/services) — componente nunca chama `fetch` direto, sempre passa por um service.
+
+```
+src/
+├── pages/          # LandingPage, LoginPage, DashboardPage, SearchPage, RoadmapPage, AboutPage
+├── components/     # reutilizáveis: MovieCard, Navbar, ChatBox, MessageBubble, SentimentBadge...
+├── services/       # api/authService.js, api/filmsService.js, api/favoritesService.js
+│                   #   -> único lugar com fetch() e header de auth centralizado
+├── context/        # AuthContext.jsx -> evita repetir localStorage.getItem em tudo
+├── hooks/          # useAuth.js, useWebSocket.js -> lógica reaproveitável
+├── routes/         # ProtectedRoute.jsx
+├── assets/
+└── App.jsx
+```
+
+**Por quê:**
+
+- Hoje a URL da API e o header `Authorization` estão espalhados e repetidos em cada função de `app.js`/`auth.js`. Centralizando em `services/`, muda-se a URL base ou a lógica de token num lugar só.
+- Hoje cada página lê `localStorage.getItem('access_token')` na mão — se o token expirar, cada arquivo reage diferente. Com `AuthContext`, o estado de auth vive num lugar só.
+
+---
+
+## Backlog de componentes (criar só quando a funcionalidade existir)
+
+- `Pagination` — só se a busca ganhar paginação de resultados
+- `Sidebar` — só se o layout do dashboard precisar
+- `Tag` — só se houver categorização de filmes/gêneros na UI
+
+---
+
+## Notas / decisões em aberto
+
+- [ ] Token continua em `localStorage` por enquanto — trocar para algo mais seguro (ex: cookie httpOnly) é discussão separada
+- [ ] "Built with" na landing só pode listar tecnologia que existe de fato no código — checar antes de publicar qualquer texto de marketing

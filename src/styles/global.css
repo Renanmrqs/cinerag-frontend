@@ -28,6 +28,29 @@ h1 {
     font-weight: 500;
 }
 
+.btn-outline {
+    background: transparent;
+    border:  1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: var(--border-radius-btn);
+    transition: box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline:hover {
+    box-shadow: 0 0 0 4px #38bdf840;
+    border-color: var(--color-primary);
+}
+
+.primary-btn, .secondary-btn {
+    transition: filter 0.2s ease;
+}
+
+.primary-btn:hover, .secondary-btn:hover {
+    filter: brightness(0.7);
+}
+
 .big-btn-size {
     width: 250px;
 }
@@ -65,6 +88,14 @@ h1 {
     /* mesma base, borda amarela */
     border-left: 3px solid #f59e0b;
 }
+
+
+/* hover */
+
+
+
+
+/* spinner */
 
 .spinner {
     width: 16px;

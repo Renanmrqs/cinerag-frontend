@@ -1,6 +1,8 @@
+import FormRegister from "../components/FormRegister"
+
 function Register () {
     return (
-        <h1>Register</h1>
+        <FormRegister></FormRegister>
     ) 
 }
 

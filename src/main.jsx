@@ -4,7 +4,8 @@ import {AuthProvider} from './context/AuthProvider.jsx'
 import 'devicon'
 import './styles/global.css'
 import './styles/landing.css'
-import './styles/login.css'
+import './styles/auth.css'
+
 
 import App from './App.jsx'
 
