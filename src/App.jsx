@@ -9,6 +9,7 @@ import Button from "./components/Button/Button"
 import Login from "./pages/Login"
 import GoogleCallback from "./pages/GoogleCallback"
 import GoogleComplete from "./pages/GoogleComplete"
+import ProtectedRouter from "./routes/ProtectedRouter"
 
 function App() {
   
@@ -16,15 +17,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        
+        <Route element={<ProtectedRouter/>}>
+          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/home" element={<Home/>}/>
+          <Route path="/favorites" element={<Favorites/>}/>
+          <Route path="/user" element={<User/>}/>
+        </Route>
+        
         <Route path="/" element={<LandingPage/>} />
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/home" element={<Home/>}/>
-        <Route path="/favorites" element={<Favorites/>}/>
-        <Route path="/user" element={<User/>}/>
         <Route path="/auth/google/callback" element={<GoogleCallback/>}/>
         <Route path="/auth/google/complete" element={<GoogleComplete/>} />
+      
       </Routes>
     </BrowserRouter>
   )

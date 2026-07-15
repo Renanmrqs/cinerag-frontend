@@ -62,7 +62,7 @@ function FormRegister () {
                     
                     <div className="auth-btns">
                         <input className="primary-btn submit-auth" type="submit"/>
-                        <button type="button" className="btn-outline auth-google">Register with google</button>
+                        <button type="button" className="btn-outline auth-google" onClick={() => {window.location.href = "http://127.0.0.1:8000/auth/google"}}>Register with google</button>
                        
                     </div>
                    

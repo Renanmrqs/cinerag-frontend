@@ -16,6 +16,7 @@ export const postLogin = async (identifier, password) => {
            formData
         );
         return response.data
+        console.log(response.data)
     } catch(error) {
         throw (error.response.data.detail)
         

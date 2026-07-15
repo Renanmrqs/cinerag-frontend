@@ -4,24 +4,28 @@ import { AuthProviderContext } from "../context/UserContext"
 import Toast from "../components/Toast.jsx"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import {  useSearchParams } from "react-router-dom"
+import { jwtDecode } from "jwt-decode"
 
 function GoogleCompleteReturn () {
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
-    const [token, setToken] = useState("")
     const [errorToast, setErrorToast] = useState(null)
+    const [searchParams, setSearchParams] = useSearchParams()
 
-    const {user, login} = useContext(AuthProviderContext)
+    const {login} = useContext(AuthProviderContext)
+    
     const navigate = useNavigate()
     
 
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        const token = searchParams.get("token")
         
         try {
-            setToken(user.accessToken)
             const registerReponse = await patchRegister(username, password, token)
+            login({access_token: registerReponse.access_token, user_id: registerReponse.user_id, username: username})
             navigate("/home")
         } catch (error) {
             setErrorToast(error)
