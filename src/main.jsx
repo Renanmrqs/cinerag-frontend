@@ -5,7 +5,7 @@ import 'devicon'
 import './styles/global.css'
 import './styles/landing.css'
 import './styles/auth.css'
-
+import './styles/searchfilm.css'
 
 import App from './App.jsx'
 

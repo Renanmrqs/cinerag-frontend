@@ -7,7 +7,7 @@ function landingHero() {
         <section className="landing-hero">
             <div className="hero-content">
                 <div className="content-title">
-                    <img src={cineragLogo} alt="CineRag"/>
+                    {/* <img src={cineragLogo} alt="CineRag"/> */}
                     <h1>Cinerag Analytics</h1>
                     
                 </div>

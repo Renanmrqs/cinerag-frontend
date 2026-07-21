@@ -4,22 +4,26 @@ import { AuthProviderContext } from "../context/UserContext"
 import Toast from "../components/Toast.jsx"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import Spinner from "../components/Spinner.jsx"
 
 function FormRegister () {
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [errorToast, setErrorToast] = useState(null)
+    const [isLOading, setIsLoading] = useState(false)
 
     const {user, login} = useContext(AuthProviderContext)
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        setIsLoading(true)
         
         try {
             const registerReponse = await postRegister(username, email, password)
         } catch (error) {
+            setIsLoading(false)
             setErrorToast(error)
             return
         }
@@ -27,8 +31,10 @@ function FormRegister () {
         try {
             const userResponse = await postLogin(username, password)
             login(userResponse)
+            setIsLoading(false)
             navigate('/home')
         } catch (error) {
+            setIsLoading(false)
             setErrorToast(error)
         }
     
@@ -76,6 +82,7 @@ function FormRegister () {
                     </div>
             </form>
             <Link className="btn-outline link-btn"  to={'/login'}>Already have account? click here</Link>
+            <Spinner loading={isLOading}></Spinner>
         </section>
     )
 }

@@ -1,13 +1,18 @@
-function navBar ({}) {
+import { Link } from "react-router-dom"
+
+
+
+function NavBar ({}) {
     return (
         <header className="navbar">
-            <nav class="nav">
-            <a href="/index.html" class="logo">
+            <nav className="nav">
+            <a href="/index.html" className="logo">
             {/* <img src="img/cinerag_logo.png" alt="CineRag" height="50" <img/> */}
             </a>
-            <ul class="nav-list">
-                <li><a href="/home.html">Home</a></li>
-                <li><a href="/favorites.html">Favorites</a></li>
+            <ul className="nav-list">
+                <li> <Link to={'/home'}>Search Films</Link> </li>
+                <li> <Link to={'/favorites'}>Favorites</Link> </li>
+                <li> <Link to={'/dashboard'}>Dashboard</Link> </li>
                 <li> <button id="logout">Logout</button> </li>
             </ul>
             </nav>
@@ -16,4 +21,4 @@ function navBar ({}) {
     )
 }
 
-export default navBar
+export default NavBar

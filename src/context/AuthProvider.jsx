@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { AuthProviderContext } from "./UserContext";
 
 export function AuthProvider ( {children} ) {
-   
+   const [userTrigger, setUserTrigger] = useState(false)
     const [user, setUser] = useState(
     {
         accessToken: null, 
         userID: null, 
         userName: null
     }
+    
 )
+
+    
      
     function login ( item ) {
     if (item.access_token) {
@@ -24,9 +27,6 @@ export function AuthProvider ( {children} ) {
     } else {
         null
     }
- 
-        
-
 }
 
     useEffect(() => {
@@ -35,12 +35,24 @@ export function AuthProvider ( {children} ) {
         const username = localStorage.getItem('username')
         const item = {access_token, user_id, username} 
         login(item)
+        setUser(
+        {accessToken: access_token,
+        userID: user_id,
+        userName: username}
+        )  
+        setUserTrigger(true)
     }, [])
 
-
+    function trigger () {
+        if (userTrigger) {
+            return userTrigger
+        } else {
+            return null
+        }
+    }
 
     return (
-        <AuthProviderContext.Provider value={ {user, login} }>
+        <AuthProviderContext.Provider value={ {user, login, trigger} }>
             {children}
         </AuthProviderContext.Provider>
     )

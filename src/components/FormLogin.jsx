@@ -4,23 +4,28 @@ import { AuthProviderContext } from "../context/UserContext"
 import Toast from "../components/Toast.jsx"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import Spinner from "../components/Spinner.jsx"
 
 function FormLogin() {
     const [password, setPassword] = useState("")
     const [identify, setIdentify] = useState("")
     const [errorToast, setErrorToast] = useState(null)
+    const [isLOading, setIsLoading] = useState(false)
 
     const { user, login } = useContext(AuthProviderContext)
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
+        setIsLoading(true)
         try {
+            
             const userResponse = await postLogin(identify, password)
+            setIsLoading(false)
             login(userResponse)
             navigate('/home')
         } catch (error) {
+            setIsLoading(false)
             setErrorToast(error)
         }
     }
@@ -59,7 +64,7 @@ function FormLogin() {
                 </div>
             </form>
             <Link className="btn-outline link-btn " to={'/register'}>Dont have account? click here</Link>
-
+                    <Spinner loading={isLOading}></Spinner>
         </section>
     )
 }
